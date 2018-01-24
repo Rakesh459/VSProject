@@ -102,6 +102,7 @@ namespace GlobalErrorHandler
             }
         }
         private ObjectSet<MainTable> _MainTables;
+        //just for checking
 
         #endregion
 
