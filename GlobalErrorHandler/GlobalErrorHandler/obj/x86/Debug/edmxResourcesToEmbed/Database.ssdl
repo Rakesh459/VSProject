@@ -3,6 +3,7 @@
   <EntityContainer Name="GlobalErrorHandlerStoreContainer">
     <EntitySet Name="ChildTable" EntityType="GlobalErrorHandler.Store.ChildTable" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MainTable" EntityType="GlobalErrorHandler.Store.MainTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Test" EntityType="GlobalErrorHandler.Store.Test" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MainTable_Status1_FK" Association="GlobalErrorHandler.Store.MainTable_Status1_FK">
       <End Role="ChildTable" EntitySet="ChildTable" />
       <End Role="MainTable" EntitySet="MainTable" />
@@ -23,6 +24,14 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Marks" Type="int" Nullable="false" />
     <Property Name="Status1" Type="int" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Marks" Type="int" />
   </EntityType>
   <Association Name="MainTable_Status1_FK">
     <End Role="ChildTable" Type="GlobalErrorHandler.Store.ChildTable" Multiplicity="0..1" />

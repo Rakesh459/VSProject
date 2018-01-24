@@ -102,7 +102,26 @@ namespace GlobalErrorHandler
             }
         }
         private ObjectSet<MainTable> _MainTables;
+
         //just for checking
+
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        
+        public ObjectSet<Test> Tests
+        {
+            get
+            {
+                if ((_Tests == null))
+                {
+                    _Tests = base.CreateObjectSet<Test>("Tests");
+                }
+                return _Tests;
+            }
+        }
+        private ObjectSet<Test> _Tests;
+
 
         #endregion
 
@@ -122,6 +141,14 @@ namespace GlobalErrorHandler
         public void AddToMainTables(MainTable mainTable)
         {
             base.AddObject("MainTables", mainTable);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Tests EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTests(Test test)
+        {
+            base.AddObject("Tests", test);
         }
 
         #endregion
@@ -412,6 +439,113 @@ namespace GlobalErrorHandler
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GlobalErrorHandler", Name="Test")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Test : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Test object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Test CreateTest(global::System.Int32 id, global::System.String name)
+        {
+            Test test = new Test();
+            test.ID = id;
+            test.Name = name;
+            return test;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Marks
+        {
+            get
+            {
+                return _Marks;
+            }
+            set
+            {
+                OnMarksChanging(value);
+                ReportPropertyChanging("Marks");
+                _Marks = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Marks");
+                OnMarksChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Marks;
+        partial void OnMarksChanging(Nullable<global::System.Int32> value);
+        partial void OnMarksChanged();
+
+        #endregion
+
+    
     }
 
     #endregion

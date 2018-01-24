@@ -4,10 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GlobalErrorHandler.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="GlobalErrorHandler.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="GlobalErrorHandlerStoreContainer">
           <EntitySet Name="ChildTable" EntityType="GlobalErrorHandler.Store.ChildTable" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MainTable" EntityType="GlobalErrorHandler.Store.MainTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Test" EntityType="GlobalErrorHandler.Store.Test" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="MainTable_Status1_FK" Association="GlobalErrorHandler.Store.MainTable_Status1_FK">
             <End Role="ChildTable" EntitySet="ChildTable" />
             <End Role="MainTable" EntitySet="MainTable" />
@@ -29,6 +30,14 @@
           <Property Name="Marks" Type="int" Nullable="false" />
           <Property Name="Status1" Type="int" />
         </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Marks" Type="int" />
+        </EntityType>
         <Association Name="MainTable_Status1_FK">
           <End Role="ChildTable" Type="GlobalErrorHandler.Store.ChildTable" Multiplicity="0..1" />
           <End Role="MainTable" Type="GlobalErrorHandler.Store.MainTable" Multiplicity="*" />
@@ -41,8 +50,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GlobalErrorHandler" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -53,6 +61,7 @@
             <End Role="ChildTable" EntitySet="ChildTables" />
             <End Role="MainTable" EntitySet="MainTables" />
           </AssociationSet>
+          <EntitySet Name="Tests" EntityType="GlobalErrorHandler.Test" />
         </EntityContainer>
         <EntityType Name="ChildTable">
           <Key>
@@ -84,6 +93,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Marks" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -105,6 +122,15 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Marks" ColumnName="Marks" />
                 <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="GlobalErrorHandler.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -135,6 +161,7 @@
           <ConnectorPoint PointX="2.25" PointY="1.9228417968750002" />
           <ConnectorPoint PointX="3" PointY="1.9228417968750002" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="GlobalErrorHandler.Test" Width="1.5" PointX="6.125" PointY="1.625" Height="1.5956835937499996" />
       </Diagram>
     </Diagrams>
   </Designer>
