@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GlobalErrorHandler.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="GlobalErrorHandlerStoreContainer">
+    <EntitySet Name="ChildTable" EntityType="GlobalErrorHandler.Store.ChildTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MainTable" EntityType="GlobalErrorHandler.Store.MainTable" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MainTable_Status1_FK" Association="GlobalErrorHandler.Store.MainTable_Status1_FK">
+      <End Role="ChildTable" EntitySet="ChildTable" />
+      <End Role="MainTable" EntitySet="MainTable" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChildTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Status1" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MainTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Marks" Type="int" Nullable="false" />
+    <Property Name="Status1" Type="int" />
+  </EntityType>
+  <Association Name="MainTable_Status1_FK">
+    <End Role="ChildTable" Type="GlobalErrorHandler.Store.ChildTable" Multiplicity="0..1" />
+    <End Role="MainTable" Type="GlobalErrorHandler.Store.MainTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChildTable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MainTable">
+        <PropertyRef Name="Status1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

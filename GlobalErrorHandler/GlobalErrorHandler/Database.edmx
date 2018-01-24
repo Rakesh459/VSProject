@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GlobalErrorHandler.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GlobalErrorHandlerStoreContainer">
+          <EntitySet Name="ChildTable" EntityType="GlobalErrorHandler.Store.ChildTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MainTable" EntityType="GlobalErrorHandler.Store.MainTable" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="MainTable_Status1_FK" Association="GlobalErrorHandler.Store.MainTable_Status1_FK">
+            <End Role="ChildTable" EntitySet="ChildTable" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChildTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status1" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MainTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Marks" Type="int" Nullable="false" />
+          <Property Name="Status1" Type="int" />
+        </EntityType>
+        <Association Name="MainTable_Status1_FK">
+          <End Role="ChildTable" Type="GlobalErrorHandler.Store.ChildTable" Multiplicity="0..1" />
+          <End Role="MainTable" Type="GlobalErrorHandler.Store.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="Status1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GlobalErrorHandler" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PracticeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChildTables" EntityType="GlobalErrorHandler.ChildTable" />
+          <EntitySet Name="MainTables" EntityType="GlobalErrorHandler.MainTable" />
+          <AssociationSet Name="MainTable_Status1_FK" Association="GlobalErrorHandler.MainTable_Status1_FK">
+            <End Role="ChildTable" EntitySet="ChildTables" />
+            <End Role="MainTable" EntitySet="MainTables" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChildTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MainTables" Relationship="GlobalErrorHandler.MainTable_Status1_FK" FromRole="ChildTable" ToRole="MainTable" />
+        </EntityType>
+        <EntityType Name="MainTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Marks" Type="Int32" Nullable="false" />
+          <Property Name="Status1" Type="Int32" />
+          <NavigationProperty Name="ChildTable" Relationship="GlobalErrorHandler.MainTable_Status1_FK" FromRole="MainTable" ToRole="ChildTable" />
+        </EntityType>
+        <Association Name="MainTable_Status1_FK">
+          <End Role="ChildTable" Type="GlobalErrorHandler.ChildTable" Multiplicity="0..1" />
+          <End Role="MainTable" Type="GlobalErrorHandler.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="Status1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GlobalErrorHandlerStoreContainer" CdmEntityContainer="PracticeEntities">
+          <EntitySetMapping Name="ChildTables">
+            <EntityTypeMapping TypeName="GlobalErrorHandler.ChildTable">
+              <MappingFragment StoreEntitySet="ChildTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainTables">
+            <EntityTypeMapping TypeName="GlobalErrorHandler.MainTable">
+              <MappingFragment StoreEntitySet="MainTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Database">
+        <EntityTypeShape EntityType="GlobalErrorHandler.ChildTable" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5956835937500002" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalErrorHandler.MainTable" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="GlobalErrorHandler.MainTable_Status1_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.9228417968750002" />
+          <ConnectorPoint PointX="3" PointY="1.9228417968750002" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

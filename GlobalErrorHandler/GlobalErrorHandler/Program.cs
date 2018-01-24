@@ -10,9 +10,11 @@ namespace GlobalErrorHandler
     {
         static void Main(string[] args)
         {
+            PracticeEntities entity = new PracticeEntities();
+            List<MainTable> main = entity.MainTables.Where(x => x.Id == 1).ToList();
+            //opens the host so that it will be available to other
             using (ServiceHost host = new ServiceHost(typeof(HelloService)))
             {
-                //opens the host so that it will be available to other
                 host.Open();
                 Console.WriteLine("host Started");
                 Console.ReadKey();
