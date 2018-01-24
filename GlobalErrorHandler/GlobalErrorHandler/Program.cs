@@ -15,6 +15,7 @@ namespace GlobalErrorHandler
             //opens the host so that it will be available to other
             using (ServiceHost host = new ServiceHost(typeof(HelloService)))
             {
+                //added this on commit Added Test Table in EDMX model
                 host.Open();
                 Console.WriteLine("host Started");
                 Console.ReadKey();
