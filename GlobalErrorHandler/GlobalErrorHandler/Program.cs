@@ -12,6 +12,7 @@ namespace GlobalErrorHandler
         {
             using (ServiceHost host = new ServiceHost(typeof(HelloService)))
             {
+                //opens the host so that it will be available to other
                 host.Open();
                 Console.WriteLine("host Started");
                 Console.ReadKey();
