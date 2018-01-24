@@ -12,7 +12,8 @@ namespace GlobalErrorHandler
     {
         public string HelloMessage(string name)
         {
-            return "Hello " + name;
+         //return hello concatinated with name
+         return "Hello " + name;
         }
     }
 }
