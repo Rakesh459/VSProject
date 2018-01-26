@@ -16,7 +16,11 @@ namespace GlobalErrorHandler
             //return hello concatinated with name
             //this is used to say hello
             return "Hello " + name;
+
             //returning hello from HUB
+
+            //return hello from VS change
+
         }
     }
 }
