@@ -18,6 +18,7 @@ namespace GlobalErrorHandler
                 //added this on commit Added Test Table in EDMX model
                 host.Open();
                 Console.WriteLine("host Started");
+                //for waiting
                 Console.ReadKey();
             }
         }
