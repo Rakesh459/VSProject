@@ -10,6 +10,7 @@ namespace GlobalErrorHandler
     {
         static void Main(string[] args)
         {
+            //comment to understand
             PracticeEntities entity = new PracticeEntities();
             List<MainTable> main = entity.MainTables.Where(x => x.Id == 1).ToList();
             //opens the host so that it will be available to other
