@@ -23,4 +23,24 @@ namespace GlobalErrorHandler
             }
         }
     }
+
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Marks { get; set; }
+
+        public Student GetStudent()
+        {
+            return new Student { Id = 1, Name = "Rakesh", Marks = 20 };
+        }
+
+        public override bool Equals(object obj)
+        {
+            Student student = obj as Student;
+            return this.Id.Equals(student.Id) && this.Name.Equals(student.Name) && this.Marks.Equals(student.Marks);    
+        }
+    }
+
+
 }

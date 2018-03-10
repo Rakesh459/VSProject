@@ -102,13 +102,10 @@ namespace GlobalErrorHandler
             }
         }
         private ObjectSet<MainTable> _MainTables;
-
-        //just for checking
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        
         public ObjectSet<Test> Tests
         {
             get
@@ -121,7 +118,6 @@ namespace GlobalErrorHandler
             }
         }
         private ObjectSet<Test> _Tests;
-
 
         #endregion
 
@@ -182,7 +178,7 @@ namespace GlobalErrorHandler
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -201,7 +197,7 @@ namespace GlobalErrorHandler
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -226,7 +222,7 @@ namespace GlobalErrorHandler
             {
                 OnStatus1Changing(value);
                 ReportPropertyChanging("Status1");
-                _Status1 = StructuralObject.SetValidValue(value, true);
+                _Status1 = StructuralObject.SetValidValue(value, true, "Status1");
                 ReportPropertyChanged("Status1");
                 OnStatus1Changed();
             }
@@ -237,7 +233,6 @@ namespace GlobalErrorHandler
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -293,7 +288,7 @@ namespace GlobalErrorHandler
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -312,7 +307,7 @@ namespace GlobalErrorHandler
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -337,7 +332,7 @@ namespace GlobalErrorHandler
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -361,7 +356,7 @@ namespace GlobalErrorHandler
             {
                 OnMarksChanging(value);
                 ReportPropertyChanging("Marks");
-                _Marks = StructuralObject.SetValidValue(value);
+                _Marks = StructuralObject.SetValidValue(value, "Marks");
                 ReportPropertyChanged("Marks");
                 OnMarksChanged();
             }
@@ -385,7 +380,7 @@ namespace GlobalErrorHandler
             {
                 OnStatus1Changing(value);
                 ReportPropertyChanging("Status1");
-                _Status1 = StructuralObject.SetValidValue(value);
+                _Status1 = StructuralObject.SetValidValue(value, "Status1");
                 ReportPropertyChanged("Status1");
                 OnStatus1Changed();
             }
@@ -396,7 +391,6 @@ namespace GlobalErrorHandler
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -466,7 +460,7 @@ namespace GlobalErrorHandler
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -485,7 +479,7 @@ namespace GlobalErrorHandler
                 {
                     OnIDChanging(value);
                     ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
+                    _ID = StructuralObject.SetValidValue(value, "ID");
                     ReportPropertyChanged("ID");
                     OnIDChanged();
                 }
@@ -510,7 +504,7 @@ namespace GlobalErrorHandler
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -534,7 +528,7 @@ namespace GlobalErrorHandler
             {
                 OnMarksChanging(value);
                 ReportPropertyChanging("Marks");
-                _Marks = StructuralObject.SetValidValue(value);
+                _Marks = StructuralObject.SetValidValue(value, "Marks");
                 ReportPropertyChanged("Marks");
                 OnMarksChanged();
             }
@@ -545,10 +539,8 @@ namespace GlobalErrorHandler
 
         #endregion
 
-    
     }
 
     #endregion
 
-    
 }

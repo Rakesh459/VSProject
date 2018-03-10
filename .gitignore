@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/GlobalErrorHandler/packages/NUnit.3.9.0
+/GlobalErrorHandler/.vs/GlobalErrorHandler/v15
+/GlobalErrorHandler/GlobalErrorHandler/bin
+/GlobalErrorHandler/GlobalErrorHandler/obj
+/GlobalErrorHandler/GlobalErrorHandlerTests/bin
+/GlobalErrorHandler/GlobalErrorHandlerTests/obj
