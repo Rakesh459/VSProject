@@ -11,6 +11,7 @@ namespace GlobalErrorHandler
         static void Main(string[] args)
         {
             // added for merge conflict
+            //added to make merge conflict to check rebase
             //added to make conflict and check how rebase works
             //comment to understand
             //always comment to understand
