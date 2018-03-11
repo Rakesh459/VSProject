@@ -10,6 +10,7 @@ namespace GlobalErrorHandler
     {
         static void Main(string[] args)
         {
+            //merge 1
             //merge 2
             // added for merge conflict
             //added to make merge conflict to check rebase
